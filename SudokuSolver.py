@@ -15,9 +15,16 @@ def RowChecker(pzl) :
 
 def ColumnChecker(pzl) :
     errs = 0
-    for i in pzl :
-        for j in i :
-            print(j)
+    pzlCol = pzl.copy()
+    for i in range(9) :
+        for j in range(9) :
+            pzlCol[i][j] = pzl[j][i]
+            print(pzl[j][i])
+    
+    for n in pzlCol :
+        if(len(n) != len(set(n))):
+            errs += 1
+    print(pzlCol)
     return errs
 
 #end of functions
@@ -38,10 +45,10 @@ R9 = [0,0,6,0,0,0,0,0,0]
 
 allRows = [R1,R2,R3,R4,R5,R6,R7,R8,R9]
 
-print(RowChecker(allRows))
+
 totalErrs = totalErrs + RowChecker(allRows)
 
-ColumnChecker(allRows)
+totalErrs = totalErrs + ColumnChecker(allRows)
 
 print(totalErrs)
 
