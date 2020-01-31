@@ -9,9 +9,15 @@ def RowChecker(pzl) :
     for n in pzl :
         if(len(n) != len(set(n))):
             errs += 1
-    
-    
-    
+    return errs
+
+
+
+def ColumnChecker(pzl) :
+    errs = 0
+    for i in pzl :
+        for j in i :
+            print(j)
     return errs
 
 #end of functions
@@ -35,6 +41,9 @@ allRows = [R1,R2,R3,R4,R5,R6,R7,R8,R9]
 print(RowChecker(allRows))
 totalErrs = totalErrs + RowChecker(allRows)
 
-
+ColumnChecker(allRows)
 
 print(totalErrs)
+
+if(totalErrs > 0):
+    print("Puzzle is not solved, there are still {} errors.".format(totalErrs))
